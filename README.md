@@ -59,29 +59,38 @@ Lo primero que pense fue lo siguiente: una cadena es una lista inmutable, convir
 def mayor_suma_consecutiva(lista):
     # Verificamos si la lista tiene al menos dos elementos para sumar
     if len(lista) < 2:
-        return None  # Si la lista es muy pequeña para tener pares consecutivos, asignamos None como salida
+        return None  # Si la lista es muy pequeña para tener pares consecutivos, retornamos None
 
     max_suma = lista[0] + lista[1]  # Iniciamos con la primera suma
-
+    nums=(lista[0],lista[1])
     # Iterar a partir del segundo elemento
     for i in range(1, len(lista)-1):
         consecutiva = lista[i] + lista[i + 1]  # Suma de los elementos consecutivos
+        nums=(lista[i],lista[i+1])
         max_suma = max(max_suma, consecutiva)  # El valor mas alto se tomara como la mayor suma
-    return max_suma
+    return max_suma, nums
 if __name__=="__main__":
-  elementos=list(map(int, input("Ingresa valores separados por un espacio:" ).split())) #map+list
+  elementos=list(map(int, input("Ingresa valores separados por un espacio:" ).split()))
   print(elementos)
   resultado = mayor_suma_consecutiva(elementos)
   if resultado == None:
     print("No hay sufientes elementos para sumar")
   else:
-    print("La mayor suma entre consecutivos es:", resultado)
+    print("La mayor suma entre consecutivos es:", resultado[0], f"entre {resultado[1]}")
 ```
 Para este fue gran cosita, sumar cada valor en parejas y comparar cual seria la mayor, sabia que usaria max pero no sabia donde y aun mas importante una iteracion, osea el for este si fue "sencillo" indice 1 + indice siguiente eso si sin salirse del rango de la lista con lo que asi para agregar una toleracia a errores al programa agregamos una condicion en la que si no hay suficientes valores para sumar sale None y esto se utiliza mas tarde para dar una salida condicional, volviendo a la iteracion, posterior a realizar la suma comparamos este valor nuevo con el nuevo obtenido y se tomara el mayor de estos y se guardara como nuevo valor maximo.
 
-### split() + map() + list() 
-este es un metodo que me gusta usar bastante, me hace sentir "profesional" pero es una cosa bien simple, split separara la cadena principal de input en valores cadena, map convertira esos valores cadenas en valores enteros ya que usa int en este caso, y list convierte ese map de iterador logico a una lista real usable
- 
+Ahora comentando hacerca del nums, este es para saber cuales fueron los valores que se sumaron asi como extra y ademas como notaran la salida e la funcion tiene 2 valores (si la lista tiene 2 o mas valores para evitar el None) asi que resultado tendra una pocision de indexacion solo si se verifica que si se podian sumar los valores para imprimir las respuestas
+
+**Ejemplo de entrada:** 4 5 6 7 8
+**salida dada:** La mayor suma entre consecutivos es: 15 entre (7, 8)
+
+### split() + map() + list() (Extra)
+este es un metodo que me gusta usar bastante, me hace sentir "profesional" pero es una cosa bien simple, split separara la cadena principal de input en valores cadena, map convertira esos valores cadenas en valores enteros ya que usa int en este caso, y list convierte ese map de iterador logico a una lista real usable.
+
+### Comprension de lista (Forma correcta)
+Aun no me acostumbro a usar esto pero es realmente util e investigando mi metodo split() + map() + list() se "parece" a una "list comprenhension" pero es menos flexible asi que esta linea de abajo seria una forma mas correcta de hacerlo pero eso no fue lo que aplique pero aun asi lo dejo como algo curioso.
+
 ```python
 elementos = [int(x) for x in input("Ingresa valores separados por un espacio:").split()]
 ```
