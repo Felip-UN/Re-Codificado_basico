@@ -26,4 +26,34 @@ print("Resultado:", resultado)
 EL titulo se llama operacion compresa debido a que quice que se redujera lo mas posible las lineas de codigo, en la linea de entradas use un metodo comodo a mi parecer mediante el cual puedo asignar varias variables en una sola linea de codigo mediante el uso de un split
 y posteriormente transformando los valores cadena en valores enteros, ya a la hora de querer "comprimir la operacion" dije: "Como hago para solo ponerlo ahí?" pense en hacer un monton de condicionales lo cual hubiera servido pero no lo hubiera dejado compreso, posteriormente recorde las lambda pero luego era listo estarian compresas, ahora... como hago que cada caso se asigne a la hora de digitarlo que lo busque en una lista? AH! que tal un diccionario?! la llave seria el operador (cadena) y la clave puede ser cualquier cosa verdad? incluso operaciones? al parecer si y listo asignar valores a posteriori y tenemos programa completo
 
+**Ejemplo de entrada:** 4 6 *
+**salida dada:** Resultado: 24
+
 ## Palíndromo
+```python
+#Palindromos
+comparador=[]
+plab=list(input("Ingresa tu palabra!: "))#la convierto en lista
+comparador.append(plab.copy()) #guardo una copia de esta lista en el compardor
+
+plab.reverse() #la invierto con un reverse que modifica la original
+comparador.append(plab.copy()) #guardo la otra compia
+
+print(comparador) #Visualicemos las salidas
+
+if comparador[0]==comparador[1]: #Se comparan las copias
+  print("Tu palabra es un palindromo :D")
+else:
+  print("Tu palabra no es un palindromo :(")
+```
+Lo primero que pense fue lo siguiente: una cadena es una lista inmutable, convirtamosla en algo mutable :) asi desde el inicio lo que se crea es una lista estuve viendo maneras sencillas de revertirla pero lo unico que me salia era, usa reverse() o un bucle for pero uno el bucle no lo entendia, asi que aunque podria funcionar pero "no como queria" y el reverse no servia al ser una asignacion de variables y daba None :c, pero sucede que si no se asignaba sino que se definia de por si, si me daba una lista invertida asi que use eso pero dije: hmmm como los comparo? guardemoslo en una lista y comparamos no? listo... como los guardo para que no sean el mismo? porque el reverse mutaba la lista y si esta la guardaba asi como si nada se modificaba asi fuera que la linea de codigo se ejecutara antes, pero que hay de una copia eh? y listo guardas la copia y despues otra copia distinta y se comparan como si nada :)
+
+**Ejemplo de entrada:** oso
+**salida dada:** Tu palabra es un palindromo :D
+
+**Ejemplo de entrada:** gato
+**salida dada:** Tu palabra no es un palindromo :(
+
+## Mayor suma consecutiva
+
+Stand By, Work in progress
