@@ -55,5 +55,36 @@ Lo primero que pense fue lo siguiente: una cadena es una lista inmutable, convir
 **salida dada:** Tu palabra no es un palindromo :(
 
 ## Mayor suma consecutiva
+```python
+def mayor_suma_consecutiva(lista):
+    # Verificamos si la lista tiene al menos dos elementos para sumar
+    if len(lista) < 2:
+        return None  # Si la lista es muy pequeña para tener pares consecutivos, asignamos None como salida
+
+    max_suma = lista[0] + lista[1]  # Iniciamos con la primera suma
+
+    # Iterar a partir del segundo elemento
+    for i in range(1, len(lista)-1):
+        consecutiva = lista[i] + lista[i + 1]  # Suma de los elementos consecutivos
+        max_suma = max(max_suma, consecutiva)  # El valor mas alto se tomara como la mayor suma
+    return max_suma
+if __name__=="__main__":
+  elementos=list(map(int, input("Ingresa valores separados por un espacio:" ).split())) #map+list
+  print(elementos)
+  resultado = mayor_suma_consecutiva(elementos)
+  if resultado == None:
+    print("No hay sufientes elementos para sumar")
+  else:
+    print("La mayor suma entre consecutivos es:", resultado)
+```
+Para este fue gran cosita, sumar cada valor en parejas y comparar cual seria la mayor, sabia que usaria max pero no sabia donde y aun mas importante una iteracion, osea el for este si fue "sencillo" indice 1 + indice siguiente eso si sin salirse del rango de la lista con lo que asi para agregar una toleracia a errores al programa agregamos una condicion en la que si no hay suficientes valores para sumar sale None y esto se utiliza mas tarde para dar una salida condicional, volviendo a la iteracion, posterior a realizar la suma comparamos este valor nuevo con el nuevo obtenido y se tomara el mayor de estos y se guardara como nuevo valor maximo.
+
+### split() + map() + list() 
+este es un metodo que me gusta usar bastante, me hace sentir "profesional" pero es una cosa bien simple, split separara la cadena principal de input en valores cadena, map convertira esos valores cadenas en valores enteros ya que usa int en este caso, y list convierte ese map de iterador logico a una lista real usable
+ 
+```python
+elementos = [int(x) for x in input("Ingresa valores separados por un espacio:").split()]
+```
+## Combinaciones encadenadas iguales
 
 Stand By, Work in progress
